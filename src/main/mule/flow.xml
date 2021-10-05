@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config1" doc:name="HTTP Listener config" doc:id="4adf452a-f327-49cd-a793-524e782968c9" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="flow_and_choiceFlow" doc:id="0732ab89-23e8-447b-86c9-a0cce2310060" >
+		<http:listener doc:name="Listener" doc:id="84db24d1-2137-4b54-990b-f677cd9de206" config-ref="HTTP_Listener_config1" path="/flow"/>
+		<choice doc:name="Choice" doc:id="e6fe499e-90a7-4a7d-98a0-74cf7e76ce60" >
+			<when expression="#[attributes.queryParams.country == 'et']">
+				<set-payload value="ethiopia" doc:name="Set Payload" doc:id="11ff8b91-0f81-4499-bcd6-324c7de5b75e" />
+			</when>
+			<when expression="#[attributes.queryParams.country == 'Us']">
+				<set-payload value="united" doc:name="Set Payload" doc:id="bfc06841-ed06-40ec-b1bd-1a3156f61b02" />
+			</when>
+			<otherwise>
+				<set-payload value="nothing" doc:name="Set Payload" doc:id="3f5156d1-2931-4075-a31f-af320dd9df62" />
+			</otherwise>
+		</choice>
+	</flow>
+</mule>
