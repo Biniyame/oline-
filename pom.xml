@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
@@ -7,7 +9,7 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
-	<name>flow</name>
+	<name>olineT</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,45 +18,42 @@
 		<app.runtime>4.2.1</app.runtime>
 		<mule.maven.plugin.version>3.5.2</mule.maven.plugin.version>
 	</properties>
-
 	<build>
-		
-			<plugins>
-				<plugin>
-					<groupId>org.mule.tools.maven</groupId>
-					<artifactId>mule-maven-plugin</artifactId>
-					<version>${mule.maven.plugin.version}</version>
-					<extensions>true</extensions>
-					<configuration>
-						<cloudHubDeployment>
-							<uri>https://anypoint.mulesoft.com</uri>
-							<muleversion>4.3.0</muleversion>
-							<username>${cloudhub.username}</username>
-							<password>${cloudhub.password}</password>
-							<applicationName>
-								ci_cd
-							</applicationName>
-							<enviroment>
-								QA
-							</enviroment>
-							<workers>1</workers>
-							<workerType>
-								MICRO
-							</workerType>
-							<objectStoreV2>
-								true
-							</objectStoreV2>
-							<properties>
-								<http.port>8081</http.port>
-								<https.port>8082</https.port>
-							</properties>
-						</cloudHubDeployment>
-
-					</configuration>
-				</plugin>
-			</plugins>
-		
+		<plugins>
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>${mule.maven.plugin.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<muleversion>4.3.0</muleversion>
+						<username>${cloudhub.username}</username>
+						<password>${cloudhub.password}</password>
+						<applicationName>
+							olineT
+						</applicationName>
+						<enviroment>
+							QA
+						</enviroment>
+						<workers>1</workers>
+						<workerType>
+							MICRO
+						</workerType>
+						<objectStoreV2>
+							true
+						</objectStoreV2>
+						<properties>
+							<http.port>8081</http.port>
+						</properties>
+					</cloudHubDeployment>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
+
+
 
 	<dependencies>
 		<dependency>
